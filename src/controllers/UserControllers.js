@@ -1,4 +1,5 @@
 import User from "../models/user";
+import { createPasswordHash } from "../services/auth";
 
 class UserController {
   async index(req, res) {
@@ -10,7 +11,9 @@ class UserController {
       return res.status(500).json({ error: "interval server error" });
     }
   }
-  async show(req, res) {}
+  async show(req, res) {
+   
+  }
   async create(req, res) {
     try {
       const { email, password } = req.body;
@@ -21,9 +24,11 @@ class UserController {
           .json({ message: `User ${email} already exists.` });
       }
 
-      const newUser = await User.create({ email, password });
+      const encryptedPassword = await createPasswordHash(password)
 
-      return res.status(201).json({ message: `User created ${newUser}` });
+      const newUser = await User.create({ email,  password: encryptedPassword });
+
+      return res.status(201).json(newUser);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: "interval server error" });
