@@ -2,6 +2,7 @@ import  express  from 'express'
 import helloController from './controllers/helloController'
 import UserController from './controllers/UserControllers'
 import RepoController from './controllers/RepoController'
+import auth from './middlewares/auth'
 
 const routes =  express()
 
@@ -11,6 +12,9 @@ const routes =  express()
 
 
 routes.get('/hello', helloController.index)
+
+routes.use(auth)
+
 
 routes.get('/users', UserController.index)
 routes.get('/users/:id', UserController.show)
