@@ -2,21 +2,20 @@ import  express  from 'express'
 import helloController from './controllers/helloController'
 import UserController from './controllers/UserControllers'
 import RepoController from './controllers/RepoController'
-import auth from './middlewares/auth'
 import SessionController from './controllers/SessionController'
+import auth from './middlewares/auth'
 
 const routes =  express()
 
 
 
-// -- 
+
 
 
 routes.post('/sessions', SessionController.create)
 routes.get('/hello', helloController.index)
 
-routes.use(auth)
-
+ routes.use(auth)
 
 routes.get('/users', UserController.index)
 routes.get('/users/:id', UserController.show)

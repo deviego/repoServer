@@ -7,10 +7,10 @@ export default async (req, res, next) => {
     const authHeader = req.headers.authorization
 
     if(!authHeader){
-        return res.status(401).json({error: 'Token was not provided aqui'})
+        return res.status(401).json({error: 'Token was not provided aqui'}) 
     }
 
-    const [, token] = authHeader.split(' ')
+    const [ ,token] = authHeader.split('')
 
     try {
         const decode = await promisify(Jwt.verify)(token, authConfig.secret)
