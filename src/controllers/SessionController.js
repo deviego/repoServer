@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import authConfig from "../config/auth";
 import User from "../models/User";
-import { checkPassword } from "../services/auth";
+import  {checkPassword}  from "../services/auth";
 
 class SessionController {
   async create(req, res) {
