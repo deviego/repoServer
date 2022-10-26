@@ -1,6 +1,7 @@
 class HelloController {
     async index(req, res) {
-       return res.json({hello:"beautiful world"})
+        console.log("dfsdaff")
+       return res.status(200).json({hello:"beautiful world"})
     }
 }
 
