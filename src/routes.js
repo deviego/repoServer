@@ -11,7 +11,8 @@ const routes =  express()
 routes.post('/sessions', SessionController.create)
 routes.get('/hello', HelloController.index)
 
-routes.use(auth)
+//routes.use(auth)
+
 routes.get('/users',UserController.index)
 routes.get('/users/:id', UserController.show)
 routes.post('/users', UserController.create)
@@ -20,7 +21,7 @@ routes.delete('/users/:id', UserController.destroy)
 
 routes.get('/users/:user_id/repositories', RepoController.index)
 routes.post('/users/:user_id/repositories', RepoController.create)
-routes.delete('/users/:user_id/:id', RepoController.destroy)
+routes.delete('/users/:user_id/repositories/:id', RepoController.destroy)
 
 
 
