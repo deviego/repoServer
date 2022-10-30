@@ -63,21 +63,22 @@ class RepositoriesController {
 
   async destroy(req, res) {
     try {
-      const { user_id, id } = req.params;
+      const { user_id, _id } = req.params;
       const user = await User.findById(user_id);
+
       if (!user) {
         return res.status(404).json();
       }
 
       const repository = await Repository.findOne({
         userId: user_id,
-        id,
+        id: _id
       })
 
       if (!repository) {
         return res.status(404).json();
       }
-      await repository.deleteOne()
+      await Repository.findByIdAndDelete({_id: _id})
       return res.status(200).json()
 
 
