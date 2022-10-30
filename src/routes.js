@@ -11,7 +11,7 @@ const routes =  express()
 routes.post('/sessions', SessionController.create)
 routes.get('/hello', HelloController.index)
 
-//routes.use(auth)
+routes.use(auth)
 
 routes.get('/users',UserController.index)
 routes.get('/users/:id', UserController.show)
