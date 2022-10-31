@@ -63,6 +63,30 @@ class ProductController {
     }
   }
 
+  
+  async update(req, res) {
+    try{
+        const {_id} = req.params;
+
+        const product = await Product.findById(_id) 
+
+        if(!product){
+            return res.status(404).json()
+        }
+
+      
+
+      const { name, amount, quantity, description } = req.body;
+      await product.updateOne({ name, amount, quantity, description })
+       res.status(200).json()
+
+
+    }catch(error){
+        console.error(error)
+        return res.status(500).json({error: "interval server error"})
+    }
+  }
+
   async destroy(req, res) {
     try {
       const { user_id, _id } = req.params;

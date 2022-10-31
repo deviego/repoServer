@@ -20,9 +20,10 @@ routes.post('/users', UserController.create)
 routes.put('/users/:id', UserController.update)
 routes.delete('/users/:id', UserController.destroy)
 
-// routes.get('/users/:user_id/repositories', RepoController.index)
+routes.get('/users/:user_id/products', ProductsController.index)
 routes.post('/users/:user_id/products', ProductsController.create)
-// routes.delete('/users/:user_id/repositories/:_id', RepoController.destroy)
+routes.post('/users/:user_id/products/:_id', ProductsController.update)
+routes.delete('/users/:user_id/repositories/:_id', ProductsController.destroy)
 
 
 
